@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://m1w644wwdxxa"]
+
+[ext_resource type="Texture2D" uid="uid://bdccasp51iffg" path="res://Assets/Buttons/asdasd.png" id="1_8oc8e"]
+[ext_resource type="Script" path="res://Start/start.gd" id="1_l1rpx"]
+[ext_resource type="Texture2D" uid="uid://c0mdmyqhlnsit" path="res://Assets/image_461.png" id="2_bktc2"]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_l1rpx")
+
+[node name="Image461" type="Sprite2D" parent="."]
+position = Vector2(42, 24)
+scale = Vector2(0.056, 0.048)
+texture = ExtResource("2_bktc2")
+
+[node name="Asdasd" type="Sprite2D" parent="."]
+position = Vector2(42, 37)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8oc8e")
+
+[node name="Asdasd2" type="Sprite2D" parent="."]
+position = Vector2(42, 43)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8oc8e")
+
+[node name="Asdasd3" type="Sprite2D" parent="."]
+position = Vector2(42, 31)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8oc8e")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 84.0
+offset_bottom = 26.0
+text = "TITULO"
+horizontal_alignment = 1
+vertical_alignment = 1
