@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://m1w644wwdxxa"]
+[gd_scene load_steps=6 format=3 uid="uid://m1w644wwdxxa"]
 
-[ext_resource type="Texture2D" uid="uid://bdccasp51iffg" path="res://Assets/Buttons/asdasd.png" id="1_8oc8e"]
 [ext_resource type="Script" path="res://Start/start.gd" id="1_l1rpx"]
 [ext_resource type="Texture2D" uid="uid://c0mdmyqhlnsit" path="res://Assets/image_461.png" id="2_bktc2"]
+[ext_resource type="PackedScene" uid="uid://bj68rt288sm3g" path="res://Assets/Buttons/Credits/credits_button.tscn" id="4_othok"]
+[ext_resource type="PackedScene" uid="uid://bqd08nldibx4p" path="res://Assets/Buttons/Start/start_button.tscn" id="5_tw6yx"]
+[ext_resource type="PackedScene" uid="uid://opbvvxiextim" path="res://Assets/Buttons/Quit/quit_button.tscn" id="6_w2d17"]
 
 [node name="Start" type="Node2D"]
 script = ExtResource("1_l1rpx")
@@ -12,24 +14,21 @@ position = Vector2(42, 24)
 scale = Vector2(0.056, 0.048)
 texture = ExtResource("2_bktc2")
 
-[node name="Asdasd" type="Sprite2D" parent="."]
-position = Vector2(42, 37)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_8oc8e")
-
-[node name="Asdasd2" type="Sprite2D" parent="."]
-position = Vector2(42, 43)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_8oc8e")
-
-[node name="Asdasd3" type="Sprite2D" parent="."]
-position = Vector2(42, 31)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_8oc8e")
-
 [node name="Label" type="Label" parent="."]
 offset_right = 84.0
 offset_bottom = 26.0
 text = "TITULO"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Start Button" parent="." instance=ExtResource("5_tw6yx")]
+position = Vector2(42, 30)
+scale = Vector2(0.4, 0.3)
+
+[node name="Credits Button" parent="." instance=ExtResource("4_othok")]
+position = Vector2(42, 37)
+scale = Vector2(0.4, 0.3)
+
+[node name="Quit Button" parent="." instance=ExtResource("6_w2d17")]
+position = Vector2(42, 44)
+scale = Vector2(0.4, 0.3)

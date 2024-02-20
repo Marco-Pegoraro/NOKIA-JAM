@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://opbvvxiextim"]
+
+[ext_resource type="Texture2D" uid="uid://bge5c6jhdlqtl" path="res://Assets/Buttons/Quit/quit1.png" id="1_hl6e1"]
+[ext_resource type="Texture2D" uid="uid://bs4ffioy4rosd" path="res://Assets/Buttons/Quit/quit2.png" id="2_4mjak"]
+[ext_resource type="Texture2D" uid="uid://dpir74ybsc77l" path="res://Assets/Buttons/Quit/quit3.png" id="3_isy82"]
+[ext_resource type="Texture2D" uid="uid://dc3c42k3s7gup" path="res://Assets/Buttons/Quit/quit4.png" id="4_8iavc"]
+[ext_resource type="Texture2D" uid="uid://bd73cxvoa4y3o" path="res://Assets/Buttons/Quit/quit5.png" id="5_sdmy0"]
+[ext_resource type="Texture2D" uid="uid://cv7fj8vpbbuxp" path="res://Assets/Buttons/Quit/quit6.png" id="6_04pcq"]
+[ext_resource type="Texture2D" uid="uid://gu4qpu7p3p5j" path="res://Assets/Buttons/Quit/quit7.png" id="7_4v21t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77be6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hl6e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4mjak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_isy82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8iavc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sdmy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_04pcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4v21t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4v21t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_04pcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sdmy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8iavc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_isy82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4mjak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_hl6e1")
+}],
+"loop": true,
+"name": &"Selected",
+"speed": 13.0
+}]
+
+[node name="Quit Button" type="Node2D" groups=["StartButtons"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_77be6")
+animation = &"Selected"

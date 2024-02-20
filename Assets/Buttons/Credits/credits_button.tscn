@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj68rt288sm3g"]
+
+[ext_resource type="Texture2D" uid="uid://deu2jiv2qrpe1" path="res://Assets/Buttons/Credits/credits1.png" id="1_1iulc"]
+[ext_resource type="Texture2D" uid="uid://8o111e8awuny" path="res://Assets/Buttons/Credits/credits2.png" id="2_o4ar2"]
+[ext_resource type="Texture2D" uid="uid://gx1fkfx6tu76" path="res://Assets/Buttons/Credits/credits3.png" id="3_1w3g2"]
+[ext_resource type="Texture2D" uid="uid://bi2tucwmq00c8" path="res://Assets/Buttons/Credits/credits4.png" id="4_hp5ak"]
+[ext_resource type="Texture2D" uid="uid://cwhng2m4i86dn" path="res://Assets/Buttons/Credits/credits5.png" id="5_qbs6n"]
+[ext_resource type="Texture2D" uid="uid://d1ffa2kg2d1p" path="res://Assets/Buttons/Credits/credits6.png" id="6_tlgwv"]
+[ext_resource type="Texture2D" uid="uid://p3ritpv1anxc" path="res://Assets/Buttons/Credits/credits7.png" id="7_h6dyg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggcsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1iulc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o4ar2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1w3g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hp5ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qbs6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tlgwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h6dyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h6dyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tlgwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qbs6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hp5ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1w3g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o4ar2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1iulc")
+}],
+"loop": true,
+"name": &"Selected",
+"speed": 13.0
+}]
+
+[node name="Credits Button" type="Node2D" groups=["StartButtons"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ggcsn")
+animation = &"Selected"

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn424lojolyi4"]
+
+[ext_resource type="Texture2D" uid="uid://c0mdmyqhlnsit" path="res://Assets/image_461.png" id="1_qtra8"]
+[ext_resource type="Texture2D" uid="uid://c2hf7xxa8icyr" path="res://Assets/asdadad.png" id="2_mbawf"]
+
+[node name="PhaseSelect" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(42, 24)
+scale = Vector2(0.056, 0.048)
+texture = ExtResource("1_qtra8")
+
+[node name="Asdadad" type="Sprite2D" parent="."]
+position = Vector2(10, 25)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mbawf")
+
+[node name="Asdadad2" type="Sprite2D" parent="."]
+position = Vector2(30, 40)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mbawf")
+
+[node name="Asdadad3" type="Sprite2D" parent="."]
+position = Vector2(50, 25)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mbawf")
+
+[node name="Asdadad4" type="Sprite2D" parent="."]
+position = Vector2(70, 40)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mbawf")
