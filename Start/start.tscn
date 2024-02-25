@@ -1,34 +1,60 @@
-[gd_scene load_steps=6 format=3 uid="uid://m1w644wwdxxa"]
+[gd_scene load_steps=12 format=3 uid="uid://m1w644wwdxxa"]
 
 [ext_resource type="Script" path="res://Start/start.gd" id="1_l1rpx"]
-[ext_resource type="Texture2D" uid="uid://c0mdmyqhlnsit" path="res://Assets/image_461.png" id="2_bktc2"]
-[ext_resource type="PackedScene" uid="uid://bj68rt288sm3g" path="res://Assets/Buttons/Credits/credits_button.tscn" id="4_othok"]
-[ext_resource type="PackedScene" uid="uid://bqd08nldibx4p" path="res://Assets/Buttons/Start/start_button.tscn" id="5_tw6yx"]
-[ext_resource type="PackedScene" uid="uid://opbvvxiextim" path="res://Assets/Buttons/Quit/quit_button.tscn" id="6_w2d17"]
+[ext_resource type="Texture2D" uid="uid://sdapxt1eyk44" path="res://Assets/Background/background2.png" id="2_3oq3v"]
+[ext_resource type="Texture2D" uid="uid://d1xumjxcikj16" path="res://Assets/Background/background3.png" id="3_vo8ce"]
+[ext_resource type="Texture2D" uid="uid://4443mbvnje2m" path="res://Assets/Background/background4.png" id="4_dqg6u"]
+[ext_resource type="Texture2D" uid="uid://po85o4nvcs24" path="res://Assets/Background/background5.png" id="5_aw2pe"]
+[ext_resource type="Texture2D" uid="uid://dks417scloe01" path="res://Assets/Background/background6.png" id="6_eo4va"]
+[ext_resource type="Texture2D" uid="uid://dbvtsrts82yvd" path="res://Assets/Background/background7.png" id="7_euj1j"]
+[ext_resource type="PackedScene" uid="uid://0c2lixk0xquj" path="res://Button Start/start.tscn" id="9_tu0bc"]
+[ext_resource type="PackedScene" uid="uid://dj8lrk5r8wkm" path="res://Button Quit/quit.tscn" id="10_45fdb"]
+[ext_resource type="Texture2D" uid="uid://buxkixt5qlbxn" path="res://Assets/title.png" id="11_4yb6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mamp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3oq3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vo8ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dqg6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aw2pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eo4va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_euj1j")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.5
+}]
 
 [node name="Start" type="Node2D"]
 script = ExtResource("1_l1rpx")
 
-[node name="Image461" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(42, 24)
-scale = Vector2(0.056, 0.048)
-texture = ExtResource("2_bktc2")
+sprite_frames = SubResource("SpriteFrames_mamp1")
+animation = &"Idle"
+frame = 2
+frame_progress = 0.166795
 
-[node name="Label" type="Label" parent="."]
-offset_right = 84.0
-offset_bottom = 26.0
-text = "TITULO"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(42, 14)
+texture = ExtResource("11_4yb6j")
 
-[node name="Start Button" parent="." instance=ExtResource("5_tw6yx")]
-position = Vector2(42, 30)
-scale = Vector2(0.4, 0.3)
+[node name="Start" parent="." instance=ExtResource("9_tu0bc")]
+position = Vector2(42, 32)
+scale = Vector2(0.7, 0.7)
 
-[node name="Credits Button" parent="." instance=ExtResource("4_othok")]
-position = Vector2(42, 37)
-scale = Vector2(0.4, 0.3)
-
-[node name="Quit Button" parent="." instance=ExtResource("6_w2d17")]
-position = Vector2(42, 44)
-scale = Vector2(0.4, 0.3)
+[node name="Quit" parent="." instance=ExtResource("10_45fdb")]
+position = Vector2(42, 40)
+scale = Vector2(0.6, 0.6)

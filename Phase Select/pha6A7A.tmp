@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn424lojolyi4"]
+
+[ext_resource type="Texture2D" uid="uid://cvn6lyk1f7245" path="res://Assets/Background/background_phase_select.png" id="1_3gvtf"]
+[ext_resource type="Script" path="res://Phase Select/phase_select.gd" id="1_5vot3"]
+[ext_resource type="Texture2D" uid="uid://cxt3d5ptp52o8" path="res://Assets/Campfire Woods/campfire_base1.png" id="2_pc5bo"]
+[ext_resource type="Texture2D" uid="uid://di7nonke5vghb" path="res://Assets/Campfire Woods/campfire_base2.png" id="3_gwjvj"]
+[ext_resource type="Texture2D" uid="uid://cq45v2yskad0c" path="res://Assets/Campfire Woods/campfire_base3.png" id="4_ph8xm"]
+[ext_resource type="FontFile" uid="uid://bihol2qhbjkcj" path="res://Assets/Fonts/Passage 7 Basic.ttf" id="5_08hnx"]
+[ext_resource type="PackedScene" uid="uid://1bspalulxv8f" path="res://Button Back/back.tscn" id="6_gy6lc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_123tn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pc5bo")
+}],
+"loop": true,
+"name": &"NonSelected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gwjvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ph8xm")
+}],
+"loop": true,
+"name": &"Selected",
+"speed": 2.0
+}]
+
+[node name="PhaseSelect" type="Node2D"]
+script = ExtResource("1_5vot3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(42, 24)
+texture = ExtResource("1_3gvtf")
+
+[node name="CampFire01" type="AnimatedSprite2D" parent="." groups=["PhaseSelectButtons"]]
+position = Vector2(10, 35)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_123tn")
+animation = &"NonSelected"
+
+[node name="CampFire02" type="AnimatedSprite2D" parent="." groups=["PhaseSelectButtons"]]
+position = Vector2(30, 42)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_123tn")
+animation = &"NonSelected"
+
+[node name="CampFire03" type="AnimatedSprite2D" parent="." groups=["PhaseSelectButtons"]]
+position = Vector2(50, 35)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_123tn")
+animation = &"NonSelected"
+
+[node name="CampFire04" type="AnimatedSprite2D" parent="." groups=["PhaseSelectButtons"]]
+position = Vector2(70, 42)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_123tn")
+animation = &"NonSelected"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 82.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("5_08hnx")
+theme_override_font_sizes/font_size = 10
+text = "SELECT THE PHASE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" parent="." groups=["PhaseSelectButtons"] instance=ExtResource("6_gy6lc")]
+position = Vector2(9, 20)
+scale = Vector2(0.3, 0.3)

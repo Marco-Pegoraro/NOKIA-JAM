@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://ciykiprh7ueoj"]
+
+[ext_resource type="Texture2D" uid="uid://5qpl4ds2ip3w" path="res://Assets/Campfire/campfire1.png" id="1_mxdqt"]
+[ext_resource type="Script" path="res://Campfire/campfire.gd" id="1_y8m6d"]
+[ext_resource type="Texture2D" uid="uid://dwwr8ks0aep32" path="res://Assets/Campfire/campfire2.png" id="2_a1i71"]
+[ext_resource type="Texture2D" uid="uid://ckennx7dhrkl5" path="res://Assets/Campfire/campfire3.png" id="3_yuinx"]
+[ext_resource type="Texture2D" uid="uid://beoc20ndrc3th" path="res://Assets/Campfire/campfire4.png" id="4_eilrc"]
+[ext_resource type="Texture2D" uid="uid://cim8dvpog86h4" path="res://Assets/Campfire/campfire5.png" id="5_iw7or"]
+[ext_resource type="Texture2D" uid="uid://vmf0vato02aj" path="res://Assets/Campfire/campfire6.png" id="6_3hldu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wglh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mxdqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a1i71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yuinx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eilrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iw7or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3hldu")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8hlh"]
+radius = 35.2278
+
+[node name="Campfire" type="Node2D"]
+script = ExtResource("1_y8m6d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1wglh")
+animation = &"Default"
+frame_progress = 0.397103
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_b8hlh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

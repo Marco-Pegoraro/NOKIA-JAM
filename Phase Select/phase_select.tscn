@@ -1,31 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn424lojolyi4"]
+[gd_scene load_steps=9 format=3 uid="uid://cn424lojolyi4"]
 
-[ext_resource type="Texture2D" uid="uid://c0mdmyqhlnsit" path="res://Assets/image_461.png" id="1_qtra8"]
-[ext_resource type="Texture2D" uid="uid://c2hf7xxa8icyr" path="res://Assets/asdadad.png" id="2_mbawf"]
+[ext_resource type="Texture2D" uid="uid://cvn6lyk1f7245" path="res://Assets/Background/background_phase_select.png" id="1_3gvtf"]
+[ext_resource type="Script" path="res://Phase Select/phase_select.gd" id="1_5vot3"]
+[ext_resource type="PackedScene" uid="uid://ckk8l2n3ewstw" path="res://Assets/Buttons/Phases/Phase01/phase_01.tscn" id="3_i7lsx"]
+[ext_resource type="PackedScene" uid="uid://d3ax1d0qi2qoq" path="res://Assets/Buttons/Phases/Phase02/phase_02.tscn" id="4_hhb5b"]
+[ext_resource type="FontFile" uid="uid://bihol2qhbjkcj" path="res://Assets/Fonts/Passage 7 Basic.ttf" id="5_08hnx"]
+[ext_resource type="PackedScene" uid="uid://4sfgckrf0880" path="res://Assets/Buttons/Phases/Phase03/phase_03.tscn" id="5_xyqnt"]
+[ext_resource type="PackedScene" uid="uid://1bspalulxv8f" path="res://Button Back/back.tscn" id="6_gy6lc"]
+[ext_resource type="PackedScene" uid="uid://dlrlclnm62ue0" path="res://Assets/Buttons/Phases/Phase04/phase_04.tscn" id="6_lmh4a"]
 
 [node name="PhaseSelect" type="Node2D"]
+script = ExtResource("1_5vot3")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(42, 24)
-scale = Vector2(0.056, 0.048)
-texture = ExtResource("1_qtra8")
+texture = ExtResource("1_3gvtf")
 
-[node name="Asdadad" type="Sprite2D" parent="."]
-position = Vector2(10, 25)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_mbawf")
+[node name="Phase 01" parent="." groups=["PhaseSelectButtons"] instance=ExtResource("3_i7lsx")]
+position = Vector2(12, 37)
 
-[node name="Asdadad2" type="Sprite2D" parent="."]
-position = Vector2(30, 40)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_mbawf")
+[node name="Phase 02" parent="." groups=["PhaseSelectButtons"] instance=ExtResource("4_hhb5b")]
+position = Vector2(32, 38)
 
-[node name="Asdadad3" type="Sprite2D" parent="."]
-position = Vector2(50, 25)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_mbawf")
+[node name="Phase 03" parent="." groups=["PhaseSelectButtons"] instance=ExtResource("5_xyqnt")]
+position = Vector2(51, 38)
 
-[node name="Asdadad4" type="Sprite2D" parent="."]
-position = Vector2(70, 40)
+[node name="Phase 04" parent="." groups=["PhaseSelectButtons"] instance=ExtResource("6_lmh4a")]
+position = Vector2(72, 38)
+
+[node name="Title Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 82.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("5_08hnx")
+theme_override_font_sizes/font_size = 10
+text = "SELECT THE PHASE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" parent="." groups=["PhaseSelectButtons"] instance=ExtResource("6_gy6lc")]
+position = Vector2(9, 20)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_mbawf")
