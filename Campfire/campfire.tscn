@@ -1,49 +1,82 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciykiprh7ueoj"]
+[gd_scene load_steps=13 format=3 uid="uid://ciykiprh7ueoj"]
 
-[ext_resource type="Texture2D" uid="uid://5qpl4ds2ip3w" path="res://Assets/Campfire/campfire1.png" id="1_mxdqt"]
 [ext_resource type="Script" path="res://Campfire/campfire.gd" id="1_y8m6d"]
-[ext_resource type="Texture2D" uid="uid://dwwr8ks0aep32" path="res://Assets/Campfire/campfire2.png" id="2_a1i71"]
-[ext_resource type="Texture2D" uid="uid://ckennx7dhrkl5" path="res://Assets/Campfire/campfire3.png" id="3_yuinx"]
-[ext_resource type="Texture2D" uid="uid://beoc20ndrc3th" path="res://Assets/Campfire/campfire4.png" id="4_eilrc"]
-[ext_resource type="Texture2D" uid="uid://cim8dvpog86h4" path="res://Assets/Campfire/campfire5.png" id="5_iw7or"]
-[ext_resource type="Texture2D" uid="uid://vmf0vato02aj" path="res://Assets/Campfire/campfire6.png" id="6_3hldu"]
+[ext_resource type="Texture2D" uid="uid://tkwnpr571l7n" path="res://Assets/Campfire/Campfire-Sheet.png" id="2_djwgl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88yeo"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7alw"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caslt"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j1sw"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xekbq"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgst7"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b62tw"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsbfs"]
+atlas = ExtResource("2_djwgl")
+region = Rect2(224, 0, 32, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1wglh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mxdqt")
+"texture": SubResource("AtlasTexture_88yeo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_a1i71")
+"texture": SubResource("AtlasTexture_e7alw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_yuinx")
+"texture": SubResource("AtlasTexture_caslt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_eilrc")
+"texture": SubResource("AtlasTexture_0j1sw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_iw7or")
+"texture": SubResource("AtlasTexture_xekbq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_3hldu")
+"texture": SubResource("AtlasTexture_jgst7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b62tw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsbfs")
 }],
 "loop": true,
-"name": &"Default",
-"speed": 4.0
+"name": &"Idle",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8hlh"]
-radius = 35.2278
+radius = 34.7131
 
 [node name="Campfire" type="Node2D"]
 script = ExtResource("1_y8m6d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1wglh")
-animation = &"Default"
-frame_progress = 0.397103
+animation = &"Idle"
+frame_progress = 0.112869
 
 [node name="Area2D" type="Area2D" parent="."]
 

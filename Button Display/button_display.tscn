@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://byp24ccx0l1ag"]
+
+[ext_resource type="Script" path="res://Button Display/button_display.gd" id="1_5bdb5"]
+[ext_resource type="Texture2D" uid="uid://dpg1ml47wlgbv" path="res://Assets/Button Display/button_display1.png" id="2_wy06s"]
+[ext_resource type="Texture2D" uid="uid://58dwshrssrr2" path="res://Assets/Button Display/button_display2.png" id="3_eq6qv"]
+[ext_resource type="FontFile" uid="uid://bihol2qhbjkcj" path="res://Assets/Fonts/Passage 7 Basic.ttf" id="4_1wmex"]
+
+[node name="Button Display" type="Node2D"]
+script = ExtResource("1_5bdb5")
+
+[node name="ButtonNonSelect" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_wy06s")
+
+[node name="ButtonNonSelectLabel" type="Label" parent="ButtonNonSelect"]
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 17.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("4_1wmex")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonOnSelect" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("3_eq6qv")
+
+[node name="ButtonOnSelectLabel" type="Label" parent="ButtonOnSelect"]
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 17.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("4_1wmex")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

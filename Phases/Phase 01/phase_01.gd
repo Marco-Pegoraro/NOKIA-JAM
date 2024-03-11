@@ -1,143 +1,111 @@
 extends Node2D
 
 @onready
-var igloo = $Igloo;
-
-@onready
-var campFire = $Campfire;
-
-@onready
-var campFire2 = $Campfire2;
-
-@onready
-var key = $Key;
-
-@onready
 var player = get_node("Player");
 
 @onready
-var coldBar = $"CanvasLayer/Cold Bar".get_node("Sprite2D");
+var heatBarLevel = 11;
 
-var coldBarLevel;
+@onready
+var heatBarTimer = 1.5;
 
-var coldBarTimer;
-
-var menuOrder;
-
-var replayAnimation;
-
-var menuAnimation;
-
-var buttonsGroup;
+@onready
+var menuOrder = 0;
 
 func _ready():
-	var campFireAnimation = campFire.get_node("AnimatedSprite2D");
-	campFireAnimation.play("Default");
-	
-	var campFireAnimation2 = campFire2.get_node("AnimatedSprite2D");
-	campFireAnimation2.play("Default");
-	
-	var iglooAnimation = igloo.get_node("AnimatedSprite2D");
-	iglooAnimation.play("Default");
-	
-	buttonsGroup = get_tree().get_nodes_in_group("PhaseButton");
-	replayAnimation = buttonsGroup[0].get_node("AnimatedSprite2D");
-	menuAnimation = buttonsGroup[1].get_node("AnimatedSprite2D")
-	
+	# Start campfires animations.
+	$Campfire.get_node("AnimatedSprite2D").play("Idle");
+	$Campfire2.get_node("AnimatedSprite2D").play("Idle");
+
 	Utils.playerAlive = true;
-	coldBarTimer = 2.0;
-	coldBarLevel = 11;
-	menuOrder = 0;
-	timerStart();
+	TimerStart();
 
 
 func _process(delta):
-	if (Utils.playerAlive):
-		checkColdBar();
-	else:
-		if (Input.is_action_just_pressed("ui_down")):
-			if (menuOrder + 1 > 1):
-				menuOrder = 0;
-			else: 
-				menuOrder += 1;
-		elif (Input.is_action_just_pressed("ui_up")):
-			if ((menuOrder - 1) < 0):
-				menuOrder = 1;
-			else:
-				menuOrder -= 1;
-		
-		if (menuOrder == 0):
-			replayAnimation.play("Selected");
-			menuAnimation.play("NonSelected");
-			
-			if (Input.is_action_just_released("ui_confirm")):
-				get_tree().reload_current_scene();
-		
-		if (menuOrder == 1):
-			menuAnimation.play("Selected");
-			replayAnimation.play("NonSelected");
-			
-			if (Input.is_action_just_released("ui_confirm")):
-				get_tree().change_scene_to_file("res://Phase Select/phase_select.tscn");
+	$"CanvasLayer/Heat Bar".heatBarLevel = heatBarLevel;
 	
-	if (igloo.showText == true):
-		if(player.keyCatched):
-			get_tree().change_scene_to_file("res://Phase Select/phase_select.tscn");
-			Utils.phase01Completed = true;
-		else:
-			$FindKeyLabel.visible = true;
+	if ($"CanvasLayer/Heat Bar".heatBarLevel == 0 && Utils.playerAlive):
+		GameOver();
 	else:
-		$FindKeyLabel.visible = false;
+		GameOverButtonsActions();
 	
-	if (campFire.showText == true):
-		$FirecampLabel.visible = true;
-	else:
-		$FirecampLabel.visible = false;
+	# Handle phase conclusion.
+	if ($House.endPhase):
+		get_tree().change_scene_to_file("res://Phase Select/phase_select.tscn");
+		Utils.phase01Completed = true;
 	
-	if (Utils.heatWave && coldBarLevel < 11):
-		coldBarLevel += 1;
+	# Heatbar fill up
+	if (Utils.heatWave && heatBarLevel < 11):
+		heatBarLevel += 1;
 	
 	if (player != null && player.keyCatched == false):
-		if (key.keyCatched):
-			key.queue_free()
+		if ($Key.keyCatched):
+			$Key.queue_free();
 			player.keyCatched = true;
 
 
-func timerStart():
+func TimerStart():
 	while (true):
-		await get_tree().create_timer(coldBarTimer).timeout
-		coldBarLevel -= 1;
+		await get_tree().create_timer(heatBarTimer).timeout;
+		heatBarLevel -= 1;
 
-func checkColdBar():
-	if (coldBarLevel == 11):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar1.png");
-	elif (coldBarLevel == 10):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar2.png");
-	elif (coldBarLevel == 9):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar3.png");
-	elif (coldBarLevel == 8):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar4.png");
-	elif (coldBarLevel == 7):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar5.png");
-	elif (coldBarLevel == 6):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar6.png");
-	elif (coldBarLevel == 5):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar7.png");
-	elif (coldBarLevel == 4):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar8.png");
-	elif (coldBarLevel == 3):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar9.png");
-	elif (coldBarLevel == 2):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar10.png");
-	elif (coldBarLevel == 1):
-		coldBar.texture = load("res://Assets/Cold Bar/cold_bar11.png");
-	elif (coldBarLevel == 0):
-		Utils.playerAlive = false;
-		$CanvasLayer/GameOverBackground.visible = true;
-		$CanvasLayer/Gameover.visible = true;
-		$"CanvasLayer/Replay Button".visible = true;
-		$"CanvasLayer/Menu Button".visible = true;
-		
-		
-		player.queue_free();
+
+func GameOver():
+	Utils.playerAlive = false;
+	player.get_node("AnimationPlayer").play("Death");
+	$CanvasLayer/GameOverTitle.visible = true;
+	$"CanvasLayer/Replay Button".visible = true;
+	$"CanvasLayer/Menu Button".visible = true;
+
+
+func GameOverButtonsActions():
+	# Game Over Buttons Movement.
+	if (Input.is_action_just_pressed("ui_down")):
+		if (menuOrder + 1 > 1):
+			menuOrder = 0;
+		else: 
+			menuOrder += 1;
+	elif (Input.is_action_just_pressed("ui_up")):
+		if ((menuOrder - 1) < 0):
+			menuOrder = 1;
+		else:
+			menuOrder -= 1;
 	
+	# GameOver buttons actions.
+	if (menuOrder == 0):
+		$"CanvasLayer/Replay Button".selected = true;
+		$"CanvasLayer/Menu Button".selected = false;
+			
+		if (Input.is_action_just_released("ui_confirm")):
+			get_tree().reload_current_scene();
+		
+	if (menuOrder == 1):
+		$"CanvasLayer/Menu Button".selected = true;
+		$"CanvasLayer/Replay Button".selected = false;
+			
+		if (Input.is_action_just_released("ui_confirm")):
+			get_tree().change_scene_to_file("res://Phase Select/phase_select.tscn");
+
+
+func _on_house_text_area_body_entered(body):
+	if (body.name == "Player"):
+		if player.keyCatched:
+			$KeyFoundLabel.visible = true;
+		else:
+			$FindKeyLabel.visible = true;
+
+
+func _on_house_text_area_body_exited(body):
+	if (body.name == "Player"):
+		$FindKeyLabel.visible = false;
+		$KeyFoundLabel.visible = false;
+
+
+func _on_campfire_text_area_body_entered(body):
+	if (body.name == "Player"):
+		$FirecampLabel.visible = true;
+
+
+func _on_campfire_text_area_body_exited(body):
+	if (body.name == "Player"):
+		$FirecampLabel.visible = false;

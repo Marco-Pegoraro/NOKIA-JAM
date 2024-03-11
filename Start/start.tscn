@@ -1,36 +1,37 @@
-[gd_scene load_steps=12 format=3 uid="uid://m1w644wwdxxa"]
+[gd_scene load_steps=13 format=3 uid="uid://m1w644wwdxxa"]
 
 [ext_resource type="Script" path="res://Start/start.gd" id="1_l1rpx"]
-[ext_resource type="Texture2D" uid="uid://sdapxt1eyk44" path="res://Assets/Background/background2.png" id="2_3oq3v"]
-[ext_resource type="Texture2D" uid="uid://d1xumjxcikj16" path="res://Assets/Background/background3.png" id="3_vo8ce"]
-[ext_resource type="Texture2D" uid="uid://4443mbvnje2m" path="res://Assets/Background/background4.png" id="4_dqg6u"]
-[ext_resource type="Texture2D" uid="uid://po85o4nvcs24" path="res://Assets/Background/background5.png" id="5_aw2pe"]
-[ext_resource type="Texture2D" uid="uid://dks417scloe01" path="res://Assets/Background/background6.png" id="6_eo4va"]
-[ext_resource type="Texture2D" uid="uid://dbvtsrts82yvd" path="res://Assets/Background/background7.png" id="7_euj1j"]
-[ext_resource type="PackedScene" uid="uid://0c2lixk0xquj" path="res://Button Start/start.tscn" id="9_tu0bc"]
-[ext_resource type="PackedScene" uid="uid://dj8lrk5r8wkm" path="res://Button Quit/quit.tscn" id="10_45fdb"]
+[ext_resource type="Texture2D" uid="uid://dtxxd23foll8v" path="res://Assets/Start Background/background2.png" id="2_ix1sw"]
+[ext_resource type="Texture2D" uid="uid://ienjqdmjvvhc" path="res://Assets/Start Background/background3.png" id="3_nregk"]
+[ext_resource type="Texture2D" uid="uid://c5h7y144nn5ac" path="res://Assets/Start Background/background4.png" id="4_4wt6v"]
+[ext_resource type="Texture2D" uid="uid://ds4bqiidj4urx" path="res://Assets/Start Background/background5.png" id="5_8df0s"]
+[ext_resource type="Texture2D" uid="uid://cpklwjhb3nn2h" path="res://Assets/Start Background/background6.png" id="6_okbc3"]
+[ext_resource type="Texture2D" uid="uid://cjuhw0m4mu70" path="res://Assets/Start Background/background7.png" id="7_v3arj"]
+[ext_resource type="PackedScene" uid="uid://byp24ccx0l1ag" path="res://Button Display/button_display.tscn" id="9_0lqau"]
+[ext_resource type="FontFile" uid="uid://bihol2qhbjkcj" path="res://Assets/Fonts/Passage 7 Basic.ttf" id="10_cn66k"]
 [ext_resource type="Texture2D" uid="uid://buxkixt5qlbxn" path="res://Assets/title.png" id="11_4yb6j"]
+[ext_resource type="Texture2D" uid="uid://bqrh5k02jm1ea" path="res://Assets/white_bg.png" id="11_vyala"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mamp1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3oq3v")
+"texture": ExtResource("2_ix1sw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_vo8ce")
+"texture": ExtResource("3_nregk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dqg6u")
+"texture": ExtResource("4_4wt6v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_aw2pe")
+"texture": ExtResource("5_8df0s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_eo4va")
+"texture": ExtResource("6_okbc3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_euj1j")
+"texture": ExtResource("7_v3arj")
 }],
 "loop": true,
 "name": &"Idle",
@@ -44,17 +45,58 @@ script = ExtResource("1_l1rpx")
 position = Vector2(42, 24)
 sprite_frames = SubResource("SpriteFrames_mamp1")
 animation = &"Idle"
-frame = 2
 frame_progress = 0.166795
 
 [node name="Title" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(42, 14)
 texture = ExtResource("11_4yb6j")
 
-[node name="Start" parent="." instance=ExtResource("9_tu0bc")]
+[node name="Start Button" parent="." instance=ExtResource("9_0lqau")]
 position = Vector2(42, 32)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.2, 0.2)
+labelText = "Start"
 
-[node name="Quit" parent="." instance=ExtResource("10_45fdb")]
+[node name="Quit Button" parent="." instance=ExtResource("9_0lqau")]
 position = Vector2(42, 40)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.2, 0.2)
+labelText = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 22.0
+offset_top = -9.0
+offset_right = 42.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("10_cn66k")
+theme_override_font_sizes/font_size = 45
+text = "C"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Label"]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 51.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("10_cn66k")
+theme_override_font_sizes/font_size = 23
+text = "old"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WhiteBg" type="Sprite2D" parent="Label"]
+position = Vector2(29, 29.5)
+scale = Vector2(1.1, 0.45)
+texture = ExtResource("11_vyala")
+
+[node name="Label3" type="Label" parent="Label"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 52.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("10_cn66k")
+theme_override_font_sizes/font_size = 18
+text = "Run"
+horizontal_alignment = 1
+vertical_alignment = 1
